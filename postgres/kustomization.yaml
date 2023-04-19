@@ -3,7 +3,11 @@ kind: Kustomization
 
 namespace: tdm-msds-crucible
 resources:
-  - github.com/CrucibleSDS/k8s-base/postgres?ref=main
+  - github.com/CrucibleSDS/k8s-base/postgres?ref=ed9d78f0a7e9d3fd9288aab7a4dc7cd7c7f0398f
 
 patchesStrategicMerge:
   - overlays/deployment.yaml
+
+images:
+  - name: postgres
+    newTag: "14"

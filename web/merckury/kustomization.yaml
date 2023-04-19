@@ -3,8 +3,12 @@ kind: Kustomization
 
 namespace: tdm-msds-crucible
 resources:
-  - github.com/CrucibleSDS/k8s-base/merckury?ref=main
+  - github.com/CrucibleSDS/k8s-base/merckury?ref=ed9d78f0a7e9d3fd9288aab7a4dc7cd7c7f0398f
   - ./configmap.yaml
 
 patchesStrategicMerge:
   - overlays/deployment.yaml
+
+images:
+  - name: ghcr.io/cruciblesds/merckury
+    digest: sha256:434444b890c117dad06214238662a097a742a1662052355c10b023971aa1c61e

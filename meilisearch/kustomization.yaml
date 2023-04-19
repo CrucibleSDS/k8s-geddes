@@ -3,8 +3,12 @@ kind: Kustomization
 
 namespace: tdm-msds-crucible
 resources:
-  - github.com/CrucibleSDS/k8s-base/meilisearch?ref=main
+  - github.com/CrucibleSDS/k8s-base/meilisearch?ref=ed9d78f0a7e9d3fd9288aab7a4dc7cd7c7f0398f
   - ./ingress.yaml
 
 patchesStrategicMerge:
   - overlays/deployment.yaml
+
+images:
+  - name: getmeili/meilisearch
+    newTag: v0.29

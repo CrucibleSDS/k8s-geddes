@@ -3,8 +3,12 @@ kind: Kustomization
 
 namespace: tdm-msds-crucible
 resources:
-  - github.com/CrucibleSDS/k8s-base/silicon?ref=main
+  - github.com/CrucibleSDS/k8s-base/silicon?ref=ed9d78f0a7e9d3fd9288aab7a4dc7cd7c7f0398f
 
 patchesStrategicMerge:
   - overlays/deployment.yaml
   - overlays/configmap.yaml
+
+images:
+  - name: ghcr.io/cruciblesds/silicon
+    digest: sha256:a44affb8c52897438c0cebbb37131b2156d4039abcd45dae18c1ffe75a06a87c
