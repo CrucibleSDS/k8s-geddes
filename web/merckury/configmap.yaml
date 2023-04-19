@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: merckury-config-env
+data:
+  NEXT_PUBLIC_API_BASE_URL: https://crucible.geddes.rcac.purdue.edu/api/v1
+  NEXT_PUBLIC_SEARCH_API_KEY: f590ca6809cd9efcbb02984b87bfaf79ba20fb58fe9ef7ff644e91902c41daac
+  NEXT_PUBLIC_SEARCH_BASE_URL: https://crucible-search.geddes.rcac.purdue.edu/indexes/msds/search

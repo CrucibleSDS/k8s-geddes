@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: silicon-config-env
+data:
+  S3_URL: https://s3.shamrock.systems
+  S3_BUCKET_NAME: tdm-msds-crucible
+  MEILI_URL: http://meilisearch.tdm-msds-crucible.svc.cluster.local
