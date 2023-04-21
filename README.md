@@ -8,6 +8,7 @@ To deploy a new release, use `kubectl apply -k .` in the base directory of this 
 
 Alternatively, deploy any of the components of this release. For example:
 
+- `kubectl apply -k bucket`
 - `kubectl apply -k postgres`
 - `kubectl apply -k meilisearch`
 - `kubectl apply -k web`
@@ -17,6 +18,10 @@ Alternatively, deploy any of the components of this release. For example:
 # Secrets
 
 Because Geddes does not have secrets management, secrets are created on the Geddes Rancher dashboard. Please read the [base manifests](https://github.com/CrucibleSDS/k8s-base) for information on how to configure secrets.
+
+# S3
+
+Crucible requires the use of an S3 bucket to store the original PDF documents. [Geddes S3-compatible storage](https://www.rcac.purdue.edu/knowledge/geddes/storage#object_storage) is used for this purpose. Because the normal endpoint, s3-prod.geddes.rcac.purdue.edu, is not available outside the Purdue campus network (users should be able to download documents directly from the bucket), an `ExternalName` `Service` and `Ingress` are created to expose the Crucible bucket. These manifests are in `bucket/`.
 
 # Bases
 
@@ -34,4 +39,3 @@ These deployments freeze images using the `images` feature of `kustomize` indepe
   - With 100 mCPU, the startup time is about 350 seconds.
   - In order to reduce startup costs, future releases may want to employ custom builds of images, as opposed to the current environment-agnostic image, perhaps utilizing the [Geddes registry](https://geddes-registry.rcac.purdue.edu/).
 - Because of limited resource quotas, all deployments are set to `Recreate`. This may lead to downtime during `apply` of new releases.
-- This project requires access to an S3 bucket. Currently an external bucket is being used, pending provisioning from Geddes.

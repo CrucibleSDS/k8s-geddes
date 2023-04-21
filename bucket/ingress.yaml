@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bucket-ingress
+  annotations:
+    kubernetes.io/ingress.class: "public"
+    nginx.ingress.kubernetes.io/backend-protocol:  "HTTPS"
+    nginx.ingress.kubernetes.io/upstream-vhost: "s3-prod.geddes.rcac.purdue.edu"
+spec:
+  rules:
+    - host: crucible-store.geddes.rcac.purdue.edu
+      http:
+        paths:
+          - backend:
+              service:
+                name: bucket
+                port:
+                  number: 443
+            path: /
+            pathType: Exact
+          - backend:
+              service:
+                name: bucket
+                port:
+                  number: 443
+            path: /tdm-msds-crucible
+            pathType: Prefix
